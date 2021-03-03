@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Petly{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  
+  <p class="display-2 text-center">Meet the Herd!</p>
+  <hr>
+  <div class="row">
+    <div class="col-12 col-10-sm col-8-md d-flex justify-content-center">
+      <div class="col-12 d-flex flex-wrap justify-content-start mt-2 mb-5">
+      
+        {% for pet in pets %}
+
+        <div class="card m-2 mb-auto" style="width: 200px;">
+          <img src="{{pet.photo_url}}" class="card-img-top home_pet_picture" alt="{{pet.name}}">
+          <div class="card-body d-grid gap-2">
+            <div class="d-flex flex-wrap justify-content-between">
+              <h5 class="card-title">{{pet.name}}</h5>
+              {% if pet.available == True %}
+              <div>
+                <span class="badge rounded-pill bg-info text-light ms-auto">Available</span>
+              </div>
+              {% endif %}
+            </div>
+            <a href="/{{pet.id}}" class="inline-block btn btn-primary">Details</a>
+          </div>
+        </div>
+
+        {% else %}
+        
+        <div class="d-flex justify-content-center col-12 my-5">
+          <p class="display-5"><i>Why don't you add a pet to get started.</i></p>
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block page_scripts %}{% endblock %}

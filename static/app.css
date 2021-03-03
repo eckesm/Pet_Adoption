@@ -1,0 +1,9 @@
+body{
+    background-color: whitesmoke;
+}
+
+.home_pet_picture{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}

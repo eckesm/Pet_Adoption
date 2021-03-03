@@ -1,0 +1,44 @@
+{{ form.hidden_tag() }}
+          
+<div class="mb-3">
+
+  <div class="mb-3">
+    <div class="input-group">
+      <span class="input-group-text">{{form.photo_url.label.text}}</span>
+      {{form.photo_url(class_='form-control')}}
+    </div>
+
+    {% for err in form.photo_url.errors %}
+    <div class="">
+      <span class="badge rounded-pill bg-danger me-1">{{err}}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-3">       
+    <div class="input-group">
+      <span class="input-group-text">{{form.notes.label.text}}</span>
+      {{form.notes(class_='form-control')}}
+    </div>
+
+    {% for err in form.notes.errors %}
+    <div class="">
+      <span class="badge rounded-pill bg-danger me-1">{{err}}</span>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <div class="mb-3">
+    <div class="form-check form-switch">
+      {{form.available(class_='form-check-input')}}
+      <label class="form-check-label" for="{{form.available.form_id}}">{{form.available.label}}</label>
+    </div>
+    
+    {% for err in form.available.errors %}
+    <div class="">
+      <span class="badge rounded-pill bg-danger me-1">{{err}}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>

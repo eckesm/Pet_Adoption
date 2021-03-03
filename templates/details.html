@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}{{pet.name}}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center my-5">
+      
+      <!-- pet details -->
+      <div class="card col-6 m-2">
+        
+        <img src="{{pet.photo_url}}" class="card-img-top" alt="{{pet.name}}">
+        
+        <div class="card-body">
+          <h5 class="card-title">{{pet.name}}</h5>
+          
+          {% if pet.notes %}
+          <p class="card-text">{{pet.notes}}</p>
+          {% endif %}
+          
+        </div>
+        
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Species:</b> {{pet.species}}</li>
+        
+          {% if pet.age %}
+          <li class="list-group-item"><b>Age:</b> {{pet.age}}</li>
+          {% endif %}
+          
+          {% if pet.available == True %}
+          <li class="list-group-item">{{pet.name}} is <b>available</b> for adoption.</li>
+          {% else %}
+          <li class="list-group-item">{{pet.name}} is <b>not available</b> for adoption.</li>
+          {% endif %}
+        </ul>
+
+      </div>
+
+
+      <!-- edit pet form -->
+      <div class="col-6 m-2">
+        
+        <form method="POST">
+
+          {% include '_edit_pet_form.html' %}
+          
+          <div class="d-flex justify-content-center">
+            <a href="/{{pet.id}}" class="btn btn-outline-danger m-1">Reset</a>
+            <button class="btn btn-primary m-1">Update Pet</button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block page_scripts %}{% endblock %}

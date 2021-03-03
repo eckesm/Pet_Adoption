@@ -1,0 +1,21 @@
+{{ form.hidden_tag() }}
+  
+{% for field in form
+  if field.widget.input_type != 'hidden' %}
+
+<div class="mb-3">
+  
+  <div class="input-group">
+    <span class="input-group-text">{{field.label.text}}</span>
+    {{field(class_='form-control')}}
+  </div>
+
+  {% for err in field.errors %}
+  <div class="">
+    <span class="badge rounded-pill bg-danger me-1">{{err}}</span>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endfor %}
